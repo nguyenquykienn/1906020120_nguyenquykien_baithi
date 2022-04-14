@@ -1,0 +1,132 @@
+﻿<Window x:Class="Tetrisgame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+        xmlns:local="clr-namespace:Tetrisgame"
+        mc:Ignorable="d"
+        Title="Terisgame" Height="600" Width="1000"
+        MinWidth="600" MinHeight="600"
+        Foreground="White"
+        FontFamily="Segoe UI Light" FontSize="28"
+        KeyDown="Window_KeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="34*"/>
+            <ColumnDefinition Width="345*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="379*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/kien.png"/>
+        </Grid.Background>
+
+        <Viewbox Grid.Row="1"
+                 Grid.Column="2"
+                 Margin="0,0,0,30">
+            <Canvas x:Name="GameCanvas"
+                    Background="Black"
+                    Width="250"
+                    Height="510"
+                    ClipToBounds="True"
+                    Loaded="GameCanvas_Loaded"/>
+
+        </Viewbox>
+
+
+        <TextBlock x:Name="ScoreText"
+                   
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   Text="Điểm: "
+                   FontSize="30"
+                   FontStyle="Italic"
+                   Foreground="Black"
+                   Margin="0,10,0,10"
+                   TextAlignment="Center"/>
+
+        <TextBlock 
+                   
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   Text="Điểm cao nhất: "
+                   FontSize="30"
+                   FontStyle="Italic"
+                   Foreground="Yellow"
+                   Margin="242,10,0,10"
+                   TextAlignment="Center" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="txtHighScore"
+                   
+                   Grid.Row="1"
+                   Grid.Column="2"
+                   FontSize="20"
+                   FontStyle="Italic"
+                   Foreground="Black"
+
+                   TextAlignment="Center" Grid.ColumnSpan="2" Margin="242,0,0,0"/>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="180,0,0,0">
+            <TextBlock Text="Giữ"
+                       FontSize="30"
+                       FontStyle="Italic"
+                       FontWeight="Black"
+                       Foreground="Black"
+                       TextAlignment="Center"/>
+
+            <Image x:Name="HoldImage"
+                   Margin="20"
+                   Width="125"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="242,0,0,0">
+            <TextBlock Text="Tiếp"
+                       FontSize="30"
+                       FontStyle="Italic"
+                       FontWeight="Heavy"
+                       Foreground="Black"
+                       TextAlignment="Center"/>
+
+            <Image x:Name="NextImage"
+                   Margin="20"
+                   Width="125"/>
+        </StackPanel>
+
+        <Grid x:Name="GameOverMenu"
+              Background="#CC000000"
+              Grid.RowSpan="2"
+              Grid.ColumnSpan="4"
+              Visibility="Hidden">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="Bạn đã thua!"
+                           FontSize="48"
+                           TextAlignment="Center"/>
+
+                <TextBlock x:Name="FinalScoreText"
+                           Text="Điểm: "
+                           FontSize="36"
+                           TextAlignment="Center"/>
+                <TextBox x:Name="txtName"></TextBox>
+
+                <Button Content="Chơi Lại"
+                        Background="WhiteSmoke"
+                        Margin="0,20,0,0"
+                        Padding="5"
+                        Click="PlayAgain_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
